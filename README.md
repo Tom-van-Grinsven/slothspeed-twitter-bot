@@ -63,7 +63,7 @@ Install the node packages via NPM in the root folder of this project
 npm install
 ```
 
-If you are in Europe, you might need to accept the GDPR EULA from Speedtest.net
+If you are in Europe, you might need to accept the GDPR EULA from Speedtest.net.
 To do this, alter the default.json config file located in the config folder.
 
 ```json
