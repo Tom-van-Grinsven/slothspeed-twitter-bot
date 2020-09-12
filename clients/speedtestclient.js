@@ -1,16 +1,13 @@
 const speedTest = require('speedtest-net');
-require('dotenv').config({path: __dirname + '/../.env'});
+const config = require('config');
 
-const CONFIG = {
-    acceptLicense: true,
-    serverId: process.env.SERVER_ID
-};
+const SPEEDTEST_SETTINGS = config.get('speedtestclient');
 
-const ACCEPTABLE_DOWNLOAD_SPEED = process.env.ACCEPTABLE_DOWNLOAD_SPEED;
-const ACCEPTABLE_UPLOAD_SPEED = process.env.ACCEPTABLE_UPLOAD_SPEED;
-const ACCEPTABLE_PING = process.env.ACCEPTABLE_PING;
+const ACCEPTABLE_DOWNLOAD_SPEED = config.get('testsettings.acceptable_download_speed');
+const ACCEPTABLE_UPLOAD_SPEED = config.get('testsettings.acceptable_upload_speed');
+const ACCEPTABLE_PING = config.get('testsettings.acceptable_ping');
 const CONVERT_TO_MBPS = 125000;
-const NR_OF_SCANS = process.env.NR_OF_SCANS;
+const NR_OF_SCANS = config.get('testsettings.nr_of_scans');
 
 let totalDownload = 0;
 let totalUpload = 0;
@@ -20,7 +17,7 @@ let RESULT = {};
 
 getSpeed = async () => {
     for (let i = 0; i < NR_OF_SCANS ; i++) {
-        let results = await speedTest(CONFIG);
+        let results = await speedTest(SPEEDTEST_SETTINGS);
         saveResults(results);
     }
 
@@ -30,7 +27,7 @@ getSpeed = async () => {
 
 saveResults = (data) => {
     totalDownload += data.download.bandwidth;
-    totalUpload += data.download.bandwidth;
+    totalUpload += data.upload.bandwidth;
     totalPing += data.ping.latency;
 };
 

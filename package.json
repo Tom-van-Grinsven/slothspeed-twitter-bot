@@ -10,6 +10,7 @@
   "author": "Tom van Grinsven",
   "license": "ISC",
   "dependencies": {
+    "config": "^3.3.1",
     "dateformat": "^3.0.3",
     "speedtest-net": "^2.1.1",
     "twitter": "^1.7.1"

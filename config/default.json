@@ -1,0 +1,12 @@
+{
+  "testsettings": {
+    "acceptable_download_speed":200,
+    "acceptable_upload_speed": 100,
+    "acceptable_ping": 1,
+    "nr_of_scans":2
+  },
+  "speedtestclient": {
+    "acceptLicense": true,
+    "serverId":5252
+  }
+}
