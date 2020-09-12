@@ -1,15 +1,16 @@
 const speedTest = require('speedtest-net');
+require('dotenv').config({path: __dirname + '/../.env'});
 
 const CONFIG = {
     acceptLicense: true,
-    serverId: 5252
+    serverId: process.env.SERVER_ID
 };
 
-const ACCEPTABLE_DOWNLOAD_SPEED = 200;
-const ACCEPTABLE_UPLOAD_SPEED = 20;
-const ACCEPTABLE_PING = 20;
+const ACCEPTABLE_DOWNLOAD_SPEED = process.env.ACCEPTABLE_DOWNLOAD_SPEED;
+const ACCEPTABLE_UPLOAD_SPEED = process.env.ACCEPTABLE_UPLOAD_SPEED;
+const ACCEPTABLE_PING = process.env.ACCEPTABLE_PING;
 const CONVERT_TO_MBPS = 125000;
-const NR_OF_SCANS = 2;
+const NR_OF_SCANS = process.env.NR_OF_SCANS;
 
 let totalDownload = 0;
 let totalUpload = 0;
