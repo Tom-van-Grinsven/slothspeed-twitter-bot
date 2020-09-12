@@ -1,0 +1,39 @@
+require('dotenv').config();
+const Twitter = require('twitter');
+const dateFormat = require('dateformat');
+const messageService = require('../services/messageService');
+
+const twitterClient = new Twitter({
+    consumer_key: process.env.CONSUMER_KEY,
+    consumer_secret: process.env.CONSUMER_SECRET,
+    access_token_key: process.env.ACCESS_TOKEN_KEY,
+    access_token_secret: process.env.ACCESS_TOKEN_SECRET
+});
+
+const DATEMASK = 'dd-mm-yyyy HH:MM';
+const URL = 'statuses/update';
+
+tweet = (testresults) => {
+
+    let message = messageService.createMessage(testresults);
+
+    if(message !== null){
+
+        message += `\r\n\r\nBeep Boop - Ik ben een bot. \r\nResultaat gemeten op ${dateFormat(new Date(), DATEMASK)}`;
+
+        twitterClient.post(URL,
+        {
+            status: message
+        }, (error) => {
+        if(error){
+            console.error(error)
+        }
+        });
+    } else {
+        console.log('Prima resultaten')
+    }
+};
+
+module.exports = {
+    tweet
+};
