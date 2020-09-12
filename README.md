@@ -15,21 +15,31 @@ CONSUMER_KEY=[your-twitter-key]
 CONSUMER_SECRET=[your-twitter-secret]
 ACCESS_TOKEN_KEY=[your-access-token]
 ACCESS_TOKEN_SECRET=[your-token-secret]
-
-# speedtest settings
-SERVER_ID=5252
-ACCEPTABLE_DOWNLOAD_SPEED=200
-ACCEPTABLE_UPLOAD_SPEED=20
-ACCEPTABLE_PING=20
-NR_OF_SCANS=2
-
-# twitter message header
-MESSAGE_HEADER=Hey @Ziggo, ik betaal jullie voor 250 Mbps download en 25 Mbps upload maar krijg gemiddeld maar:
 ```
 
-You can alter the settings for the speedtest by changing the values under the # speedtest settings line
+To alter the settings for the speedtest itself, change the default.json file located in the config folder:
 
-You can alter the Twitter message "header". Note: if you want a different language, you should change the static text in the messageService.js file as well. 
+```json
+{
+  "testsettings": {
+    "acceptable_download_speed":200,
+    "acceptable_upload_speed": 100,
+    "acceptable_ping": 20,
+    "nr_of_scans":2
+  },
+  "speedtestclient": {
+    "acceptLicense": true,
+    "serverId":5252
+  },
+  "twittermessage": {
+    "header":"Hey @Ziggo, ik betaal jullie voor 250 Mbps download en 25 Mbps upload maar krijg gemiddeld maar:"
+  }
+}
+```
+
+You can set the acceptable speeds and number of tests to anything you seem fit. 
+
+Note: doing a lot of tests will require a lot of time and network resources.
 
 ## Running it ##
 
@@ -50,14 +60,18 @@ npm install
 ```
 
 If you are in Europe, you might need to accept the GDPR EULA from Speedtest.net
-To do this, alter the config object located in the speedtestclient.js file to:
+To do this, alter the default.json config file located in the config folder.
 
-```js
-const CONFIG = {
-    acceptLicense: true,
-    serverId: process.env.SERVER_ID,
-    acceptGdpr: true
-};
+```json
+{
+  ...
+  "speedtestclient": {
+    "acceptLicense": true,
+    "serverId":5252,
+    "acceptGdpr": true
+  },
+  ...
+}
 ```
 After that, run the program via
 
