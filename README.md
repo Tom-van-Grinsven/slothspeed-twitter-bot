@@ -39,6 +39,10 @@ To alter the settings for the speedtest itself, change the default.json file loc
 
 You can set the acceptable speeds and number of tests to anything you seem fit. 
 
+The header is the first part of the Twitter message, which is written in Dutch. If you wan't to change the message
+you should change the header and unfortunately change some hardcoded Dutch text in the messageService. This should be refactored in a later stadium 
+but right now is a work in progress. 
+
 Note: doing a lot of tests will require a lot of time and network resources.
 
 ## Running it ##
