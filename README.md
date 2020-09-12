@@ -24,7 +24,7 @@ ACCEPTABLE_PING=20
 NR_OF_SCANS=2
 
 # twitter message header
-MESSAGE_HEADER=Hey, ik betaal jullie voor 250 Mbps download en 25 Mbps upload maar krijg gemiddeld maar:
+MESSAGE_HEADER=Hey @Ziggo, ik betaal jullie voor 250 Mbps download en 25 Mbps upload maar krijg gemiddeld maar:
 ```
 
 You can alter the settings for the speedtest by changing the values under the # speedtest settings line
