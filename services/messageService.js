@@ -1,6 +1,7 @@
+process.env["NODE_CONFIG_DIR"] = __dirname + "/../config/";
 const config = require('config');
 
-const MESSAGE_HEADER = config.get('twittermessage.header');
+const MESSAGE_HEADER = config.get("twittermessage.header");
 
 appendToMessage = (message, text) => {
     return message.concat(text);

@@ -1,4 +1,5 @@
 const speedTest = require('speedtest-net');
+process.env["NODE_CONFIG_DIR"] = __dirname + "/../config/";
 const config = require('config');
 
 const SPEEDTEST_SETTINGS = config.get('speedtestclient');
